@@ -13,7 +13,7 @@ app.use(express.json());
 // Define Routes
 
 app.use('/api/admin', require('./routes/admin'))
-// app.use('/api/dispatcher', require('./routes/dispatcher'))
+app.use('/api/dispatcher', require('./routes/dispatcher'))
 app.use('/api/vehicle', require('./routes/vehicle'))
 
 // Connect to MongoDB
