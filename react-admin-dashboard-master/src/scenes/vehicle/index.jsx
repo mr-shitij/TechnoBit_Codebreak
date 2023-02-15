@@ -11,10 +11,13 @@ import { useNavigate } from 'react-router-dom';
 const Team = () => {
   const navigate = useNavigate();
   const [editingRow, setEditingRow] = useState(null);
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const handleLinkChange = (id) => {
-    console.log("adsad : ", id[0]);
+    navigate(`/edit?id=${id}`);
+  };
+  const handleViewChange = (id) => {
     navigate(`/edit?id=${id}`);
   };
   const columns = [
@@ -45,22 +48,21 @@ const Team = () => {
       flex: 1,
     },
     {
-        field: "edit",
-        headerName: "Edit",
-        type: "string",
-        flex: 1,
-        renderCell: (params) => (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleLinkChange}
-          >
-            Edit
-          </Button>
-        )
-      
-    },
-  ];
+      field: "edit",
+      headerName: "Edit",
+      type: "string",
+      flex: 1,
+      renderCell: (params) => (
+        <Button
+          variant="contained"
+          color="primary"
+        >
+          Edit
+        </Button>
+      )
+    
+  },
+];
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
@@ -118,7 +120,15 @@ const Team = () => {
           },
         }}
       >        
-        <DataGrid rows={mockDataTeam} columns={columns} onSelectionChanged={handleLinkChange}/>
+        <DataGrid rows={mockDataTeam} columns={columns} onCellClick={
+          (item)=>{
+            console.log(item);
+            if(item.field === "edit")
+              handleLinkChange(item.id);
+            if(item.field === "vehicleNumber")
+              handleViewChange(item.id);
+          }
+        }/>
       
       </Box>
     </Box>
