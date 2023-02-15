@@ -5,13 +5,6 @@ const Vehicle = require('../models/Vehicle');
 // create a new vehicle
 router.post('/', async (req, res) => {
   try {
-    const { vehicleNumber } = req.body.vehicleNumber;
-    const existingVehicle = await Vehicle.findOne({ vehicleNumber });
-
-    if (existingVehicle) {
-      return res.status(400).json({ message: 'Vehicle number already exists' });
-    }
-
     const vehicle = new Vehicle(req.body);
     await vehicle.save();
     res.json(vehicle);
@@ -35,6 +28,12 @@ router.get('/', async (req, res) => {
 router.get('/:id', getVehicle, (req, res) => {
   res.json(res.vehicle);
 });
+
+// Get a specific vehicle by vehicle number
+router.get('/vehicleNumber/:number', getVehicleByNumber, (req, res) => {
+  res.json(res.vehicle);
+});
+
 
 // Update a specific vehicle by ID
 router.patch('/:id', getVehicle, async (req, res) => {
@@ -76,5 +75,19 @@ async function getVehicle(req, res, next) {
     return res.status(500).json({ message: err.message });
   }
 }
+
+async function getVehicleByNumber(req, res, next) {
+  try {
+    const vehicle = await Vehicle.findOne({ vehicleNumber: req.params.number });
+    if (vehicle == null) {
+      return res.status(404).json({ message: 'Cannot find vehicle' });
+    }
+    res.vehicle = vehicle;
+    next();
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+}
+
 
 module.exports = router;

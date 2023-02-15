@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 var cors = require('cors');
-
 const app = express();
 app.use(cors());
 
@@ -13,8 +12,8 @@ app.use(express.json());
 
 // Define Routes
 
-app.use('/api/manager', require('./routes/manager'))
-app.use('/api/dispatcher', require('./routes/dispatcher'))
+// app.use('/api/manager', require('./routes/manager'))
+// app.use('/api/dispatcher', require('./routes/dispatcher'))
 app.use('/api/vehicle', require('./routes/vehicle'))
 
 // Connect to MongoDB

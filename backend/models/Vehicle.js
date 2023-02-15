@@ -10,9 +10,9 @@ const Schema = mongoose.Schema;
 
 const Vehicle = new Schema({
   vehicleNumber:{
-    type: 'String',
+    type: String,
     required: true,
-    unique: true
+    index: true
   },
   nameWithModel: {
     type: String,
@@ -69,7 +69,8 @@ const Vehicle = new Schema({
     required: true
   },
   rpmEngine: {
-    type: String,
+    type: Number,
+    required: true
   },
   pedalPosition: {
     type: Number,

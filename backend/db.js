@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://hack:1@cluster0.jsmw52r.mongodb.net/test/hack";
+const uri = "mongodb+srv://hack:1@cluster0.jsmw52r.mongodb.net/test";
 mongoose.set('strictQuery', true);
 
 

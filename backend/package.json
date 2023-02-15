@@ -16,7 +16,8 @@
     "geohash": "^0.0.1",
     "mongoose": "^6.9.0",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
   },
   "description": ""
 }
