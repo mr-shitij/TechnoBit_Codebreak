@@ -79,97 +79,52 @@ const Form = () => {
 
   return (
     <ThemeProvider theme={theme}>
-        <form onSubmit={handleSubmit}>
-        <Grid container alignItems="center" justify="center" direction="column" defaultValue="color">
-            <Grid item>
-            <TextField
-                id="name-input"
-                name="driverName"
-                label="Name"
-                type="text"
-                color='primary'
-                value={formValues.driverName}
-                onChange={handleInputChange}
-    <form onSubmit={handleSubmit}>
-      <Grid container alignItems="center" justify="center" direction="column">
-        <Grid item>
-          <TextField
-            id="name-input"
-            name="name"
-            label="Driver Name"
-            type="text"
-            value={formValues.name}
-            onChange={handleInputChange}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            id="age-input"
-            name="age"
-            label="Available Capacity"
-            type="number"
-            value={formValues.age}
-            onChange={handleInputChange}
-          />
-        </Grid>
-        <Grid item>
-          <div style={{ width: "400px" }}>
-            
-            <Slider
-              value={formValues.favoriteNumber}
-              onChange={handleSliderChange("favoriteNumber")}
-              defaultValue={1}
-              step={1}
-              min={1}
-              max={3}
-              marks={[
-                {
-                  value: 1,
-                  label: "1",
-                },
-                {
-                  value: 2,
-                  label: "2",
-                },
-                {
-                  value: 3,
-                  label: "3",
-                },
-              ]}
-              valueLabelDisplay="off"
-            />
-            </Grid>
+<form onSubmit={handleSubmit}>
+  <Grid container alignItems="center" justify="center" direction="column" defaultValue="color" style={{ color: 'white' }} spacing={2}>
+    <Grid item>
+      <TextField
+        id="name-input"
+        name="driverName"
+        label="Name"
+        type="text"
+        color='primary'
+        value={formValues.driverName}
+        onChange={handleInputChange}
+      />
+    </Grid>
 
-            <Grid item>
-            <FormControl>
-                <FormLabel>maintainenaceStatus</FormLabel>
-                <RadioGroup
-                name="maintainenaceStatus"
-                value={formValues.maintainenaceStatus}
-                onChange={handleInputChange}
-                row
-                >
-                <FormControlLabel
-                    key="yes"
-                    value="yes"
-                    control={<Radio size="small" />}
-                    label="yes"
-                />
-                <FormControlLabel
-                    key="No"
-                    value="No"
-                    control={<Radio size="small" />}
-                    label="No"
-                />
-                </RadioGroup>
-            </FormControl>
-            </Grid>
+    <Grid item>
+      <FormControl>
+        <FormLabel>maintainenaceStatus</FormLabel>
+        <RadioGroup
+          name="maintainenaceStatus"
+          value={formValues.maintainenaceStatus}
+          onChange={handleInputChange}
+          row
+        >
+          <FormControlLabel
+            key="yes"
+            value="yes"
+            control={<Radio size="small" />}
+            label="yes"
+          />
+          <FormControlLabel
+            key="No"
+            value="No"
+            control={<Radio size="small" />}
+            label="No"
+          />
+        </RadioGroup>
+      </FormControl>
+    </Grid>
 
-            <Button variant="contained" color="primary" type="submit">
-                Submit
-            </Button>
-        </Grid>
-        </form>
+    <Grid item>
+      <Button variant="contained" color="primary" type="submit">
+        Submit
+      </Button>
+    </Grid>
+  </Grid>
+</form>
     </ThemeProvider>
   );
 };
