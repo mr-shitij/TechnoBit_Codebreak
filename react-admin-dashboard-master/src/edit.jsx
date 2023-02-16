@@ -78,7 +78,6 @@ const Form = () => {
   };
 
   return (
-<<<<<<< HEAD
     <ThemeProvider theme={theme}>
         <form onSubmit={handleSubmit}>
         <Grid container alignItems="center" justify="center" direction="column" defaultValue="color">
@@ -91,7 +90,6 @@ const Form = () => {
                 color='primary'
                 value={formValues.driverName}
                 onChange={handleInputChange}
-=======
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" justify="center" direction="column">
         <Grid item>
@@ -139,7 +137,6 @@ const Form = () => {
                 },
               ]}
               valueLabelDisplay="off"
->>>>>>> 882530a0593f77686a47ff3a40b8c119afd5a914
             />
             </Grid>
 
