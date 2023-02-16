@@ -78,6 +78,7 @@ const Form = () => {
   };
 
   return (
+<<<<<<< HEAD
     <ThemeProvider theme={theme}>
         <form onSubmit={handleSubmit}>
         <Grid container alignItems="center" justify="center" direction="column" defaultValue="color">
@@ -90,6 +91,55 @@ const Form = () => {
                 color='primary'
                 value={formValues.driverName}
                 onChange={handleInputChange}
+=======
+    <form onSubmit={handleSubmit}>
+      <Grid container alignItems="center" justify="center" direction="column">
+        <Grid item>
+          <TextField
+            id="name-input"
+            name="name"
+            label="Driver Name"
+            type="text"
+            value={formValues.name}
+            onChange={handleInputChange}
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            id="age-input"
+            name="age"
+            label="Available Capacity"
+            type="number"
+            value={formValues.age}
+            onChange={handleInputChange}
+          />
+        </Grid>
+        <Grid item>
+          <div style={{ width: "400px" }}>
+            
+            <Slider
+              value={formValues.favoriteNumber}
+              onChange={handleSliderChange("favoriteNumber")}
+              defaultValue={1}
+              step={1}
+              min={1}
+              max={3}
+              marks={[
+                {
+                  value: 1,
+                  label: "1",
+                },
+                {
+                  value: 2,
+                  label: "2",
+                },
+                {
+                  value: 3,
+                  label: "3",
+                },
+              ]}
+              valueLabelDisplay="off"
+>>>>>>> 882530a0593f77686a47ff3a40b8c119afd5a914
             />
             </Grid>
 
