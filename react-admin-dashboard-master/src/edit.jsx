@@ -43,7 +43,7 @@ const Form = () => {
           <TextField
             id="name-input"
             name="name"
-            label="Name"
+            label="Driver Name"
             type="text"
             value={formValues.name}
             onChange={handleInputChange}
@@ -53,64 +53,15 @@ const Form = () => {
           <TextField
             id="age-input"
             name="age"
-            label="Age"
+            label="Available Capacity"
             type="number"
             value={formValues.age}
             onChange={handleInputChange}
           />
         </Grid>
         <Grid item>
-          <FormControl>
-            <FormLabel>Gender</FormLabel>
-            <RadioGroup
-              name="gender"
-              value={formValues.gender}
-              onChange={handleInputChange}
-              row
-            >
-              <FormControlLabel
-                key="male"
-                value="male"
-                control={<Radio size="small" />}
-                label="Male"
-              />
-              <FormControlLabel
-                key="female"
-                value="female"
-                control={<Radio size="small" />}
-                label="Female"
-              />
-              <FormControlLabel
-                key="other"
-                value="other"
-                control={<Radio size="small" />}
-                label="Other"
-              />
-            </RadioGroup>
-          </FormControl>
-        </Grid>
-        <Grid item>
-          <FormControl>
-            <Select
-              name="os"
-              value={formValues.os}
-              onChange={handleInputChange}
-            >
-              <MenuItem key="mac" value="mac">
-                Mac
-              </MenuItem>
-              <MenuItem key="windows" value="windows">
-                Windows
-              </MenuItem>
-              <MenuItem key="linux " value="linux">
-                Linux
-              </MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item>
           <div style={{ width: "400px" }}>
-            Favorite Number
+            
             <Slider
               value={formValues.favoriteNumber}
               onChange={handleSliderChange("favoriteNumber")}
