@@ -21,11 +21,11 @@ let getDistance = function(p1Lat, p1Long, p2Lat, p2Lng) {
 };
 
 router.post("/schedule", (req, res) => {
-    const { src, dest, capacity, profitFromDelivery } = req.body;
+    const { src, dest, capacity } = req.body;
     console.log(src);
     console.log(dest);
     console.log(capacity);
-    console.log(profitFromDelivery);
+    // console.log(profitFromDelivery);
 
     Vehicle.findOne(
         {
@@ -51,9 +51,15 @@ router.post("/schedule", (req, res) => {
         {
             if (err) return res.status(500).send(err);
             if (!data) return res.status(404).send("data not found");
-            
-            let new_cap = data[0].capacity - capacity;
-            Vehicle.updateOne({capacity : new_cap})
+
+            console.log(data);
+
+            let new_cap = data.availableCapacity - capacity;  
+            Vehicle.updateOne({_id:data.id}, {
+              $set:{availableCapacity : new_cap}
+            }).then((res)=>{
+              console.log(res);
+            })
             res.send(data);
         }
     )    
