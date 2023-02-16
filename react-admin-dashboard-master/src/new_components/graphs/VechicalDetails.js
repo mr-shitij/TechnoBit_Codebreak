@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import { CssBaseline, ThemeProvider, createMuiTheme } from "@material-ui/core";
 import Content from "./Content";
 import Header from "./Header";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 // import Sidebar from "./Sidebar";
 
 const drawerWidth = 240;
@@ -40,6 +42,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function VechicalDetails() {
+  const location = useLocation();
+  const id = new URLSearchParams(location.search).get("id");
+  console.log("I am from edit and id received is :"+id);
+
+  const [recvData, setRecvData] = useState({});
+  useEffect(() => {
+      axios.get(`http://localhost:5000/api/vehicle/${id}`).then((response) => {
+        console.log(response.data)
+        setRecvData(response.data);
+          // console.log(recvData)
+      });
+  }, []);
+  
+  useEffect(() => {
+    console.log(recvData);
+  }, [recvData]);
+
   const classes = useStyles();
   const [open, setOpen] = useState(true);
   const [darkMode, setDarkMode] = useState(true);

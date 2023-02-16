@@ -35,17 +35,28 @@ router.get('/vehicleNumber/:number', getVehicleByNumber, (req, res) => {
 });
 
 
+// if (req.body.nameWithModel != null) {
+//   res.vehicle.nameWithModel = req.body.nameWithModel;
+// }
+// if (req.body.currSpeed != null) {
+//   res.vehicle.currSpeed = req.body.currSpeed;
+// }
+// // Update other fields as needed
+// try {
+//   const updatedVehicle = await res.vehicle.save();
+//   res.json(updatedVehicle);
+// } catch (err) {
+//   res.status(400).json({ message: err.message });
+// }
 // Update a specific vehicle by ID
-router.patch('/:id', getVehicle, async (req, res) => {
-  if (req.body.nameWithModel != null) {
-    res.vehicle.nameWithModel = req.body.nameWithModel;
-  }
-  if (req.body.currSpeed != null) {
-    res.vehicle.currSpeed = req.body.currSpeed;
-  }
-  // Update other fields as needed
+router.post('/update/:id', getVehicle, async (req, res) => {
+  const {_id,driverName,maintainenaceStatus } = req.body;
+  const vehicle = res.vehicle;
+  vehicle.driverName=driverName;
+  vehicle.maintainenaceStatus=maintainenaceStatus;
+  console.log("I am vehicle bc"+vehicle);
   try {
-    const updatedVehicle = await res.vehicle.save();
+    const updatedVehicle = await vehicle.save();
     res.json(updatedVehicle);
   } catch (err) {
     res.status(400).json({ message: err.message });

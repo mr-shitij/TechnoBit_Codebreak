@@ -17,8 +17,10 @@ const Team = () => {
   const handleLinkChange = (id) => {
     navigate(`/edit?id=${id}`);
   };
+  
   const handleViewChange = (id) => {
-    navigate(`/edit?id=${id}`);
+    // navigate(`/vechicalDetails`);
+    navigate(`/vechicalDetails?id=${id}`);
   };
   const columns = [
     { field: "id", headerName: "ID" },

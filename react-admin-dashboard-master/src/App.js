@@ -17,7 +17,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
 import Edit from "./edit.jsx";
-
+import VechicalDetails from "./new_components/graphs/VechicalDetails"
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -44,6 +44,7 @@ function App() {
               <Route path="/geography" element={<Geography />} />
               <Route path="/location" element={<Location />} />
               <Route path="/edit" element={<Edit />} />
+              <Route path="/vechicalDetails" element={<VechicalDetails />} />
             </Routes>
           </main>
         </div>
